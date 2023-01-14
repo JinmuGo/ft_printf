@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:07:10 by jgo               #+#    #+#             */
-/*   Updated: 2022/10/03 11:11:20 by jgo              ###   ########.fr       */
+/*   Created: 2022/11/23 13:52:53 by jgo               #+#    #+#             */
+/*   Updated: 2023/01/11 16:54:46 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+
+size_t	ft_strlen_printf(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
 
 static size_t	cal_num_len(size_t n, const size_t base_len)
 {
@@ -29,7 +39,7 @@ char	*ft_itoa_base(size_t n, char *base)
 {
 	char			*str;
 	size_t			len;
-	const size_t	base_len = ft_strlen(base);
+	const size_t	base_len = ft_strlen_printf(base);
 
 	len = cal_num_len(n, base_len);
 	str = malloc(sizeof(char) * (len + 1));
@@ -43,4 +53,20 @@ char	*ft_itoa_base(size_t n, char *base)
 		len--;
 	}
 	return (str);
+}
+
+int	ft_printf_strchr(const char *s, int c)
+{
+	int	i;
+
+	if ((char) c == '\0')
+		return ((int)ft_strlen_printf(s));
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 11:19:29 by jgo               #+#    #+#             */
-/*   Updated: 2022/10/03 12:16:50 by jgo              ###   ########.fr       */
+/*   Created: 2022/11/23 14:15:36 by jgo               #+#    #+#             */
+/*   Updated: 2022/11/23 14:17:49 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putchar(int c)
+int	ft_putstr(char *str)
 {
-	return (write(1, &c, 1));
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i += ft_putchar(str[i]);
+	return (i);
 }

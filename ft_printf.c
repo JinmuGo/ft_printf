@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 05:44:53 by jgo               #+#    #+#             */
-/*   Updated: 2022/10/03 12:15:58 by jgo              ###   ########.fr       */
+/*   Updated: 2022/12/28 14:55:12 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "./libft/libft.h"
 
 static	int	func_confirm(va_list *ap, const char conversion)
 {
 	const t_funcptr	fp[8] = {ft_printf_c, ft_printf_s, ft_printf_p, \
 		ft_printf_d, ft_printf_d, ft_printf_u, ft_printf_x, ft_printf_x};
-	const size_t	func_index = ft_strchr(CONVERSION_LIST, conversion);
+	const int		func_index = ft_printf_strchr(CONVERSION_LIST, conversion);
 
+	if (func_index == -1)
+		return (-1);
 	return (fp[func_index](ap, conversion));
 }
 

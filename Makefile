@@ -1,17 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/26 06:21:39 by jgo               #+#    #+#              #
-#    Updated: 2022/10/03 11:43:11 by jgo              ###   ########.fr        #
+#    Created: 2022/11/23 13:49:09 by jgo               #+#    #+#              #
+#    Updated: 2023/01/04 20:09:42 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+ifndef TOPDIR
+		TOPDIR = $(abspath ../..)
+endif
+include $(TOPDIR)/config/Rules.mk
+include $(TOPDIR)/config/color_rules.mk
+
+CPPFLAGS = -I$(TOPDIR)/includes
+
 NAME = libftprintf.a
 
+HEAD = ft_printf.h
 SRCS = ft_printf.c \
 		ft_printf_c.c \
 		ft_printf_d.c \
@@ -19,32 +28,36 @@ SRCS = ft_printf.c \
 		ft_printf_s.c \
 		ft_printf_u.c \
 		ft_printf_x.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		utils.c
 
 OBJS = $(SRCS:.c=.o)
+DEPS = $(SRCS:.c=.d)
+-include $(DEPS)
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
-LIBDIR = ./libft
-
-all: $(NAME)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(LIBDIR)
+all bonus:
+	$(Q)$(call color_printf,$(CYAN),$(NAME),🎯 starting compile libft)
+	$(Q)$(MAKE) $(NAME)
+	$(Q)$(call color_printf,$(GREEN),$(NAME),🔰 done!)
 
 $(NAME): $(OBJS)
-	make all -C $(LIBDIR)
-	cp $(LIBDIR)/libft.a ./$@
-	ar -rcs $@ $^
-
+		$(Q)$(call color_printf,$(GREEN),$(NAME),📚 archive object)
+		$(AR) $(ARFLAGS) $@ $^
+		$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib link_files
+		$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes link_files
+		
 clean:
-	$(RM) $(OBJS)
-	make clean -C $(LIBDIR)
+		$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib unlink_files
+		$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes unlink_files
+		$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove Objects && Dependency file)
+		$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
-	$(RM) $(NAME)
-	make fclean -C $(LIBDIR)
+		$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove $(NAME))
+		$(RM) $(NAME)
+	
+re : fclean
+	$(MAKE) all
 
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

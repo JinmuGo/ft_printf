@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 05:44:52 by jgo               #+#    #+#             */
-/*   Updated: 2022/10/05 14:39:43 by jgo              ###   ########.fr       */
+/*   Updated: 2022/11/23 14:18:31 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,17 @@ typedef enum e_conversion {
 
 typedef int	(*t_funcptr)(va_list*, const char);
 
-int	ft_printf(const char *format, ...);
-int	ft_printf_c(va_list *ap, char conversion);
-int	ft_printf_d(va_list *ap, char conversion);
-int	ft_printf_p(va_list *ap, char conversion);
-int	ft_printf_s(va_list *ap, char conversion);
-int	ft_printf_u(va_list *ap, char conversion);
-int	ft_printf_x(va_list *ap, char conversion);
+int		ft_printf(const char *format, ...);
+int		ft_printf_c(va_list *ap, char conversion);
+int		ft_printf_d(va_list *ap, char conversion);
+int		ft_printf_p(va_list *ap, char conversion);
+int		ft_printf_s(va_list *ap, char conversion);
+int		ft_printf_u(va_list *ap, char conversion);
+int		ft_printf_x(va_list *ap, char conversion);
+
+char	*ft_itoa_base(size_t n, char *base);
+int		ft_printf_strchr(const char *s, int c);
+int		ft_putchar(int c);
+int		ft_putstr(char *str);
 
 #endif

@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 00:01:27 by jgo               #+#    #+#             */
-/*   Updated: 2022/10/03 12:14:07 by jgo              ###   ########.fr       */
+/*   Updated: 2022/11/17 11:03:38 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 int	ft_printf_x(va_list *ap, const char conversion)
