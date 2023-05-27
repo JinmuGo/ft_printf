@@ -6,15 +6,15 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 13:49:09 by jgo               #+#    #+#              #
-#    Updated: 2023/05/13 19:29:11 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/27 19:23:29 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ifndef TOPDIR
 		TOPDIR = $(abspath ../..)
 endif
-include $(TOPDIR)/make_config/Rules.mk
-include $(TOPDIR)/make_config/color_rules.mk
+include $(TOPDIR)/make_config/com/ColorRules.mk
+include $(TOPDIR)/make_config/lib/Rules.mk
 
 CPPFLAGS = -I$(TOPDIR)/includes
 
