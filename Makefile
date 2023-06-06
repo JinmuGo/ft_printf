@@ -6,12 +6,12 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 13:49:09 by jgo               #+#    #+#              #
-#    Updated: 2023/05/27 19:23:29 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/06 16:36:27 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ifndef TOPDIR
-		TOPDIR = $(abspath ../..)
+		TOPDIR = $(abspath ../)
 endif
 include $(TOPDIR)/make_config/com/ColorRules.mk
 include $(TOPDIR)/make_config/lib/Rules.mk
@@ -46,7 +46,7 @@ $(NAME): $(OBJS)
 		$(AR) $(ARFLAGS) $@ $^
 		$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib link_files
 		$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes link_files
-		
+
 clean:
 		$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib unlink_files
 		$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes unlink_files
@@ -56,7 +56,7 @@ clean:
 fclean: clean
 		$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove $(NAME))
 		$(RM) $(NAME)
-	
+
 re : fclean
 	$(MAKE) all
 
