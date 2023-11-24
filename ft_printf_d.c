@@ -15,7 +15,7 @@
 int	ft_printf_d(va_list *ap, const char conversion)
 {
 	const int	arg = va_arg(*ap, int);
-	const char	*str = ft_itoa_base(arg, "0123456789");
+	const char	*str = ft_itoa_base(arg, BASE_DECIMAL);
 	int			iter;
 
 	if (str && (conversion == DECIMAL || conversion == INT))

@@ -35,15 +35,15 @@ typedef enum e_conversion {
 typedef int	(*t_funcptr)(va_list*, const char);
 
 int		ft_printf(const char *format, ...);
-int		ft_printf_c(va_list *ap, char conversion);
-int		ft_printf_d(va_list *ap, char conversion);
-int		ft_printf_p(va_list *ap, char conversion);
-int		ft_printf_s(va_list *ap, char conversion);
-int		ft_printf_u(va_list *ap, char conversion);
-int		ft_printf_x(va_list *ap, char conversion);
+int		ft_printf_c(va_list *ap, const char conversion);
+int		ft_printf_d(va_list *ap, const char conversion);
+int		ft_printf_p(va_list *ap, const char conversion);
+int		ft_printf_s(va_list *ap, const char conversion);
+int		ft_printf_u(va_list *ap, const char conversion);
+int		ft_printf_x(va_list *ap, const char conversion);
 
-char	*ft_itoa_base(size_t n, char *base);
-int		ft_printf_strchr(const char *s, int c);
+char	*ft_itoa_base(size_t n, const char *base);
+int		ft_strchr(const char *s, int c);
 int		ft_putchar(int c);
 int		ft_putstr(char *str);
 

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-size_t	ft_strlen_printf(const char *str)
+static size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
@@ -35,11 +35,11 @@ static size_t	cal_num_len(size_t n, const size_t base_len)
 	return (len);
 }
 
-char	*ft_itoa_base(size_t n, char *base)
+char	*ft_itoa_base(size_t n, const char *base)
 {
 	char			*str;
 	size_t			len;
-	const size_t	base_len = ft_strlen_printf(base);
+	const size_t	base_len = ft_strlen(base);
 
 	len = cal_num_len(n, base_len);
 	str = malloc(sizeof(char) * (len + 1));
@@ -55,12 +55,12 @@ char	*ft_itoa_base(size_t n, char *base)
 	return (str);
 }
 
-int	ft_printf_strchr(const char *s, int c)
+int	ft_strchr(const char *s, int c)
 {
 	int	i;
 
 	if ((char) c == '\0')
-		return ((int)ft_strlen_printf(s));
+		return ((int)ft_strlen(s));
 	i = 0;
 	while (s[i])
 	{
