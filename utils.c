@@ -70,3 +70,15 @@ int	ft_strchr(const char *s, int c)
 	}
 	return (-1);
 }
+
+char	*assign_decimal_value(const int arg, const char *base)
+{
+	char	sign;
+
+	sign = -1;
+	if (arg > 0)
+		sign = 1;
+	else
+		ft_putchar('-');
+	return (ft_itoa_base(arg * sign, base));
+}

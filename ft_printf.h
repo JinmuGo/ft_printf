@@ -42,6 +42,7 @@ int		ft_printf_s(va_list *ap, const char conversion);
 int		ft_printf_u(va_list *ap, const char conversion);
 int		ft_printf_x(va_list *ap, const char conversion);
 
+char	*assign_decimal_value(const int arg, const char *base);
 char	*ft_itoa_base(size_t n, const char *base);
 int		ft_strchr(const char *s, int c);
 int		ft_putchar(int c);
